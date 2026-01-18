@@ -8,7 +8,7 @@ type Props = {
 
 export default function layout({ children }: Props) {
      return (
-          <section className=' w-screen h-screen  flex flex-col'>
+          <section className=' w-screen h-screen  overflow-hidden flex flex-col'>
                <Navbar />
                <div className=' w-full h-full  flex flex-row '>
                     <Sidebar />
