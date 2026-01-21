@@ -10,9 +10,11 @@ const app = express();
 app.use(morganMiddleware);
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [
+           "https://yourenv.vercel.app",
+    ],
     credentials: true,
-  }),
+  })
 );
 app.use(express.json());
 app.use(cookieParser());

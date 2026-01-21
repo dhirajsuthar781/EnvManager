@@ -16,9 +16,9 @@ export default function EnvCard({ data, projectid }: Props) {
                     href={"/dashboard/project/" + projectid + "/" + data._id}
                     className=" bg-gray-100  p-2 cursor-pointer    px-3 flex flex-row justify-between "
                >
-                    <span className={"  font-medium text-black/80"}>{data.name || "Untitled"}</span>
+                    <span className={"  font-medium text-black/80"}>{data.title || "Untitled"}</span>
                     <div className=" flex flex-row justify-center gap-3">
-                         <DownloadEnv content={data.content} filename={data.name} />
+                         <DownloadEnv content={data.content} filename={data.title} />
                          <CopyEnv />
                     </div>
                </Link>

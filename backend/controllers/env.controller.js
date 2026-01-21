@@ -28,7 +28,7 @@ const createEnvFile = asyncHandler(async (req, res) => {
     success: true,
     message: "Env file created successfully",
     envFile: {
-      id: envFile._id,
+      _id: envFile._id,
       title: envFile.title,
       content: envFile.content,
       projectId: envFile.projectId,
@@ -51,7 +51,7 @@ const getEnvFile = asyncHandler(async (req, res) => {
   //   Fetch env's
   const envFiles = await EnvFile.find({
     projectId,
-  }).select("title createdAt");
+  });
 
   res.status(200).json({
     success: true,

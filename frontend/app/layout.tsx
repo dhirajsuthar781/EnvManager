@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Roboto, DM_Mono  , Inconsolata } from "next/font/google";
+import { Roboto, DM_Mono, Inconsolata } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import OfflineOverlay from "@/components/defined/OfflineOverlay";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -9,7 +10,7 @@ const roboto = Roboto({
 })
 const dm_mono = Inconsolata({
   variable: "--font-dm-mono",
-   
+
   subsets: ["latin"],
 })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${roboto.variable} ${dm_mono.variable} antialiased`}
       >
         {children}
+        <OfflineOverlay />
         <Toaster />
       </body>
     </html>

@@ -16,7 +16,7 @@ const createProject = asyncHandler(async (req, res) => {
     success: true,
     message: "Project created successfully",
     project: {
-      id: project._id,
+      _id: project._id,
       name: project.name,
       userId: project.userId,
       createdAt: project.createdAt,
@@ -30,7 +30,7 @@ const getProject = asyncHandler(async (req, res) => {
   });
 
   const formattedProjects = projects.map((project) => ({
-    id: project._id,
+    _id: project._id,
     name: project.name,
     userId: project.userId,
     createdAt: project.createdAt,

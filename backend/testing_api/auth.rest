@@ -1,0 +1,70 @@
+### AUTH APIS ---------------------------------------------------------------
+
+### GET LOGGED IN USER
+GET http://localhost:4000/api/v1/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDUyMzIsImV4cCI6MTc2OTAwNzAzMn0.NrHfpVr6mwFWq-UW6Bbb4VeLuoAMWr8N0iUjmzZ9HAo
+
+
+### SIGNUP API
+POST http://localhost:4000/api/v1/auth/register
+Content-Type: application/json
+
+{
+   "username": "dhirajsdf",
+  "password": "dhiraj000"
+}
+
+
+### LOGIN API
+POST http://localhost:4000/api/v1/auth/login
+Content-Type: application/json
+
+{
+   "username": "dhiraj",
+  "password": "dhiraj000"
+}
+
+### refresh API
+POST http://localhost:4000/api/v1/auth/refresh
+Content-Type: application/json
+
+{
+  "email": "nyqonowi@denipl.com"
+}
+
+
+### PROJECT APIS ---------------------------------------------------------------
+
+### GET PROJECT
+GET http://localhost:4000/api/v1/project
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDE2MDMsImV4cCI6MTc2OTAwMzQwM30.LHpAzLUJwxjUgruK1kRlRGReqwcRt6-12KZEWuEy7-Q
+
+
+### CREATE PROJECT
+POST http://localhost:4000/api/v1/project
+Content-Type: application/json
+
+{
+   "name": "Other Project"  
+}
+
+
+### ENV APIS ---------------------------------------------------------------
+
+
+### GET PROJECT
+GET http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDE2MDMsImV4cCI6MTc2OTAwMzQwM30.LHpAzLUJwxjUgruK1kRlRGReqwcRt6-12KZEWuEy7-Q
+
+
+### CREATE PROJECT
+POST http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
+Content-Type: application/json
+
+{
+   "title": "Frontend env",
+   "content": "some content"  
+}
