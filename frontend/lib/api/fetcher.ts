@@ -18,7 +18,8 @@ export async function refreshApi(tag: string) {
 
 export async function apiFetch<T>(
   url: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
+  defaultOptions?: RequestInit
 ): Promise<T> {
   const cookieStore = await cookies();
 
@@ -44,6 +45,7 @@ export async function apiFetch<T>(
       revalidate: options.revalidate,
       tags: options.tags,
     },
+    ...defaultOptions,
   };
 
   if (options.method && options.method !== 'GET' && options.body !== undefined) {

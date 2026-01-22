@@ -5,51 +5,87 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginInput } from '@/lib/validations/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
 import { useState } from 'react';
 import { storeToken } from '@/lib/api/todos';
 import { toast } from 'sonner';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
   });
 
   async function onSubmit(values: LoginInput) {
+    if (loading) return; // prevent double submit
+
     setError(null);
     setLoading(true);
-    const res = await fetch('http://localhost:4000/api/v1/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values),
-    });
-    let resData = await res.json()
 
-    if (res.ok && resData.success) {
-      toast.success(resData.message)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+
+    try {
+      const res = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+        signal: controller.signal,
+      });
+
+      let resData: any;
+      try {
+        resData = await res.json();
+      } catch {
+        throw new Error('Invalid server response');
+      }
+
+      if (!res.ok || !resData?.success) {
+        throw new Error(resData?.message || 'Login failed');
+      }
+
+      toast.success(resData.message ?? 'Login successful');
       form.reset();
-    } else {
-      toast.error(resData.message)
-      setError(resData.message);
-      return;
-    }
 
-    // store JWT securely in httpOnly cookie
-    let storeTokenRes = await storeToken(resData.accessToken);
-    setLoading(false);
-    // redirect or refresh
-    router.push('/dashboard')
+      await storeToken(resData.accessToken);
+
+      router.push('/dashboard');
+    } catch (err: any) {
+      if (err.name === 'AbortError') {
+        toast.error('Request timed out. Please try again.');
+        setError('Request timed out');
+      } else if (!navigator.onLine) {
+        toast.error('No internet connection');
+        setError('You are offline');
+      } else {
+        toast.error(err.message || 'Something went wrong');
+        setError(err.message || 'Login failed');
+      }
+    } finally {
+      clearTimeout(timeoutId);
+      setLoading(false);
+    }
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="  pt-5  space-y-2">
-      <p className=' text-xl font-semibold text-center pb-5'>Login Please</p>
-      <Input placeholder="Username" {...form.register('username')} />
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      className="pt-5 space-y-2"
+    >
+      <p className="text-xl font-semibold text-center pb-5">
+        Login Please
+      </p>
+
+      <Input
+        placeholder="Username"
+        disabled={loading}
+        {...form.register('username')}
+      />
       <p className="text-red-500 text-sm">
         {form.formState.errors.username?.message}
       </p>
@@ -57,6 +93,7 @@ export default function LoginForm() {
       <Input
         type="password"
         placeholder="Password"
+        disabled={loading}
         {...form.register('password')}
       />
       <p className="text-red-500 text-sm">

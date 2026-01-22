@@ -1,3 +1,4 @@
+import { LoginRes } from "../types/types";
 import { apiFetch } from "./fetcher";
 
 export function getMe() {
@@ -39,3 +40,4 @@ export function createProject({ name }: { name: string }) {
           body: { name }, method: 'POST', token: true,
      });
 }
+ 
