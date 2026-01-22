@@ -5,16 +5,17 @@ import { MouseEvent } from 'react'
 import { toast } from 'sonner'
 type Props = {
      size?: number
-     strokeWidth?: number
+     strokeWidth?: number,
+     content: string
 }
 
-export default function CopyEnv({ size, strokeWidth }: Props) {
+export default function CopyEnv({ size, strokeWidth, content }: Props) {
      const { isCopied, copy } = useCopyToClipboard()
      async function copyHandler(e: MouseEvent) {
-
+          
           e.stopPropagation();
           e.preventDefault();
-          const success = await copy("demo content")
+          const success = await copy(content)
           if (success) {
                toast.success('Env variables copied to clipboard')
           } else {

@@ -31,8 +31,7 @@ export default function DownloadEnv({ size, strokeWidth, content, filename }: Pr
                
                const link = document.createElement('a');
                link.href = url;
-
-            
+ 
                link.download = filename ? `${filename}.env` : '.env';
 
               

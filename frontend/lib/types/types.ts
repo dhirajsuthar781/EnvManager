@@ -5,6 +5,15 @@ export type Project_card_item = {
      no_envs?: number
 }
 
+export type ProjectType={
+     _id: string,
+     name: string
+     userId: string
+     no_envs?: number
+     createdAt: string
+}
+
+
 export type EnvFileType = {
      _id: string,
      title: string,
@@ -25,3 +34,18 @@ export type LoginRes = {
      success: boolean
      user: { id: string, username: string }
 }
+
+ 
+
+
+type BaseResponse = {
+     success: boolean;
+     message: string;
+};
+
+export type ApiResponse<T, K extends string> = BaseResponse & Record<K, T>;
+
+ 
+/*------------------------------------
+Apis response return type
+--------------------------------------*/

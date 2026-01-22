@@ -9,20 +9,5 @@ export function getTodos() {
     tags: ['todos'],
   });
 }
-export async function storeToken(token: string) {
-  return fetch('/api/auth/store-token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ token }),
-  });
-}
-
-export async function logout() {
-  return fetch('/api/auth/logout', {
-    method: 'POST',
-  });
-}
 
 

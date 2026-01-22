@@ -57,7 +57,7 @@ export default function ContentHandler({ envid, content }: Props) {
                     <Textarea
                          onChange={(e) => setValue(e.target.value)}
                          value={value}
-                         className="  "
+                         className=" mt-8 "
                          placeholder="PORT=3000..."
                     />
                ) : (

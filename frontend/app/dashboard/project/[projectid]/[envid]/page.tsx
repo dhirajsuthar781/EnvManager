@@ -30,7 +30,6 @@ export default async function page({ params }: Props) {
      let content: string = "Lorem ipsum dolor, sit amet  "
      return (
           <PageWrapper >
-
                <header className=" flex-row flex justify-between">
                     <span className=" text-xl text-black/80 font-medium">Frontend Env</span>
                     <div className="  flex items-center gap-3">

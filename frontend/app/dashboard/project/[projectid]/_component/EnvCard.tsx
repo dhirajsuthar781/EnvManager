@@ -19,13 +19,13 @@ export default function EnvCard({ data, projectid }: Props) {
                     <span className={"  font-medium text-black/80"}>{data.title || "Untitled"}</span>
                     <div className=" flex flex-row justify-center gap-3">
                          <DownloadEnv content={data.content} filename={data.title} />
-                         <CopyEnv />
+                         <CopyEnv content={data.content}/>
                     </div>
                </Link>
                <div className="p-2  px-3 ">
-                    <p>
+                    <pre className='whitespace-pre-wrap text-black/75'>
                          {data.content || <span className=' italic'>No content</span>}
-                    </p>
+                    </pre>
                </div>
           </div>
      )

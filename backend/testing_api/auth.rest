@@ -3,7 +3,7 @@
 ### GET LOGGED IN USER
 GET http://localhost:4000/api/v1/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDUyMzIsImV4cCI6MTc2OTAwNzAzMn0.NrHfpVr6mwFWq-UW6Bbb4VeLuoAMWr8N0iUjmzZ9HAo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 
 ### SIGNUP API
@@ -27,7 +27,10 @@ Content-Type: application/json
 
 ### refresh API
 POST http://localhost:4000/api/v1/auth/refresh
+
 Content-Type: application/json
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 {
   "email": "nyqonowi@denipl.com"
@@ -39,12 +42,12 @@ Content-Type: application/json
 ### GET PROJECT
 GET http://localhost:4000/api/v1/project
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDE2MDMsImV4cCI6MTc2OTAwMzQwM30.LHpAzLUJwxjUgruK1kRlRGReqwcRt6-12KZEWuEy7-Q
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 ### CREATE PROJECT
 POST http://localhost:4000/api/v1/project
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 {
    "name": "Other Project"  
@@ -54,15 +57,16 @@ Content-Type: application/json
 ### ENV APIS ---------------------------------------------------------------
 
 
-### GET PROJECT
+### GET ENV
 GET http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwMDE2MDMsImV4cCI6MTc2OTAwMzQwM30.LHpAzLUJwxjUgruK1kRlRGReqwcRt6-12KZEWuEy7-Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 
-### CREATE PROJECT
+### CREATE ENV
 POST http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
 
 {
    "title": "Frontend env",

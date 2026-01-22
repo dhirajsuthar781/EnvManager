@@ -1,4 +1,4 @@
-import { LoginRes } from "../types/types";
+import { ApiResponse, EnvFileType, LoginRes, ProjectType } from "../types/types";
 import { apiFetch } from "./fetcher";
 
 export function getMe() {
@@ -14,30 +14,45 @@ export function getMe() {
 }
 
 export function getEnv({ id }: { id: string }) {
-     return apiFetch<any>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${id}/env-files`, {
+     return apiFetch<ApiResponse<EnvFileType[], "envFiles">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${id}/env-files`, {
           token: true,
           tags: [`env-${id}`]
      });
 }
 
-export function createEnvFile({ id }: { id: string }) {
-     return apiFetch<any>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${id}/env-files`, {
+export function createEnvFileApi({ projectId, title, content }: { projectId: string, title: string, content: string }) {
+     return apiFetch<ApiResponse<EnvFileType, "envFile">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${projectId}/env-files`, {
           token: true,
           method: 'POST',
-          tags: [`env-${id}`]
+          body: { title, content },
+          tags: [`env-${projectId}`]
      });
 }
 
 
 export function getProjects() {
-     return apiFetch<any>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project`, {
+     return apiFetch<ApiResponse<ProjectType[], "formattedProjects">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project`, {
           token: true,
           tags: ["projects"]
      });
 }
-export function createProject({ name }: { name: string }) {
-     return apiFetch<any>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project`, {
+export function createProjectApi({ name }: { name: string }) {
+     return apiFetch<ApiResponse<ProjectType, "project">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project`, {
           body: { name }, method: 'POST', token: true,
      });
 }
- 
+export async function storeToken(token: string) {
+     return fetch('/api/auth/store-token', {
+          method: 'POST',
+          headers: {
+               'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+     });
+}
+
+export async function logout() {
+     return fetch('/api/auth/logout', {
+          method: 'POST',
+     });
+}

@@ -10,7 +10,7 @@ type Props = {
 export default async function FetchEnvFiles({ projectid }: Props) {
 
      const { envFiles } = await getEnv({ id: projectid })
-
+     
      return (
           <>
                <div className="  font-medium top-2 right-5 text-sm">
