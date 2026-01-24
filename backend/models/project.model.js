@@ -12,10 +12,19 @@ const projectSchema = new Schema(
       ref: "User",
       required: true,
     },
+    recentAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { timestamps: true },
 );
 
-const Project = mongoose.model("Project", projectSchema);
 
+projectSchema.methods.updateRecent = async function () {
+  this.recentAt = Date.now();
+  return await this.save();
+};
+
+const Project = mongoose.model("Project", projectSchema);
 export { Project };

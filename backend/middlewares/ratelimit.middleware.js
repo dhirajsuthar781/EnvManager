@@ -1,4 +1,4 @@
-import rateLimit from "express-rate-limit";
+import { rateLimit, ipKeyGenerator } from "express-rate-limit";
 
 const loginRateLimiter = rateLimit({
   windowMs: 60 * 1000 * 15, // 15 minutes
@@ -8,6 +8,10 @@ const loginRateLimiter = rateLimit({
   message: {
     success: false,
     message: "Too many login attempts, please try again later.",
+  },
+  validate: { trustProxy: false },
+  keyGenerator: (req) => {
+    return req.user ? String(req.user) : ipKeyGenerator(req.ip);
   },
 });
 
@@ -20,7 +24,10 @@ const createProjectRateLimiter = rateLimit({
     success: false,
     message: "Hold on! Too many requests. Please try again later.",
   },
-  keyGenerator: (req) => req.user || req.ip,
+  keyGenerator: (req) => {
+    return req.user ? String(req.user) : ipKeyGenerator(req.ip);
+  },
+  validate: { trustProxy: false }
 });
 
 const deleteProjectRateLimiter = rateLimit({
@@ -32,7 +39,10 @@ const deleteProjectRateLimiter = rateLimit({
     success: false,
     message: "Hold on! Too many requests. Please try again later.",
   },
-  keyGenerator: (req) => req.user || req.ip,
+  keyGenerator: (req) => {
+    return req.user ? String(req.user) : ipKeyGenerator(req.ip);
+  },
+  validate: { trustProxy: false }
 });
 
 export { loginRateLimiter, createProjectRateLimiter, deleteProjectRateLimiter };

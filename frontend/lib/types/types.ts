@@ -2,7 +2,8 @@ export type Project_card_item = {
      _id: string,
      userId: string
      name: string,
-     no_envs?: number
+     no_envs?: number,
+     recentAt?: string
 }
 
 export type ProjectType={
@@ -11,6 +12,7 @@ export type ProjectType={
      userId: string
      no_envs?: number
      createdAt: string
+     recentAt?: string
 }
 
 

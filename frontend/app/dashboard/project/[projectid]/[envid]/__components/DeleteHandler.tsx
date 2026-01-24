@@ -6,22 +6,23 @@ import { TrashIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 type Props = {
-     envid: string,
+     envid?: string,
      type: "CONTEXT_ITEM" | "BUTTON",
+     func?: "ENV" | "PROJECT",
      projectId: string
 
 }
 
-export default function DeleteHandler({ envid, type ,projectId}: Props) {
-     const router = useRouter()     
+export default function DeleteHandler({ envid, type, projectId, func = "ENV" }: Props) {
+     const router = useRouter()
      return (
           type == "BUTTON" ?
                <Button variant={'destructive'}
                     onClick={() => {
                          useDeleteDialog.getState().openDialog({
-                              id: envid,
+                              id: envid || "",
                               projectId: projectId,
-                              type: "ENV",
+                              type: func,
                          })
                          router.back()
                     }}
@@ -32,8 +33,8 @@ export default function DeleteHandler({ envid, type ,projectId}: Props) {
                     onSelect={(e) => {
 
                          useDeleteDialog.getState().openDialog({
-                              id: envid,
-                              type: "ENV",
+                              id: envid || "",
+                              type: func,
                               projectId: projectId
                          })
                     }}
