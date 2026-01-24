@@ -6,11 +6,12 @@ import { TrashIcon } from "lucide-react"
 
 type Props = {
      envid: string,
-     type: "CONTEXT_ITEM" | "BUTTON"
+     type: "CONTEXT_ITEM" | "BUTTON",
+     projectId: string
 
 }
 
-export default function DeleteHandler({ envid, type }: Props) {
+export default function DeleteHandler({ envid, type ,projectId}: Props) {
 
 
      return (
@@ -19,6 +20,7 @@ export default function DeleteHandler({ envid, type }: Props) {
                     onClick={() => {
                          useDeleteDialog.getState().openDialog({
                               id: envid,
+                              projectId: projectId,
                               type: "ENV",
                          })
                     }}
@@ -31,6 +33,7 @@ export default function DeleteHandler({ envid, type }: Props) {
                          useDeleteDialog.getState().openDialog({
                               id: envid,
                               type: "ENV",
+                              projectId: projectId
                          })
                     }}
                >
