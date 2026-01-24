@@ -18,8 +18,10 @@ const createEnvFile = asyncHandler(async (req, res) => {
     userId: req.user,
   });
 
-  if (!project) throw new ApiError(403, "Access Denied");
 
+  if (!project) throw new ApiError(403, "Access Denied");
+  project.recentAt = Date.now();
+  await project.save();
   //   create env file
   const envFile = await EnvFile.create({
     title,
@@ -89,7 +91,8 @@ const updateEnvFile = asyncHandler(async (req, res) => {
 
   if (title) envFile.title = title;
   if (content) envFile.content = content;
-
+  project.recentAt = Date.now();
+  await project.save();
   await envFile.save();
 
   res.status(200).json({
@@ -113,7 +116,8 @@ const deleteEnvFile = asyncHandler(async (req, res) => {
   });
 
   if (!project) throw new ApiError(403, "Access Denied");
-
+  project.recentAt = Date.now();
+  await project.save();
   await envFile.deleteOne();
 
   res.status(200).json({
@@ -142,7 +146,7 @@ const getEnvFileById = asyncHandler(async (req, res) => {
     message: "Env File fetched successfully.",
     envFile,
   });
-}); 
+});
 
 export {
   createEnvFile,

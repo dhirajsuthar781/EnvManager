@@ -8,7 +8,6 @@ import DownloadEnv from './DownloadEnv'
 import CopyEnv from './CopyEnv'
 import { EnvFileType } from '@/lib/types/types'
 import Link from 'next/link'
-import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 import DeleteHandler from "../[envid]/__components/DeleteHandler"
 import EditAndShareMenuButton from "./EditAndShareMenuButton"
 
@@ -43,7 +42,7 @@ export default function EnvCard({ data, projectid }: Props) {
                     </div>
                </ContextMenuTrigger>
                <ContextMenuContent>
-                    <DeleteHandler envid={data._id} projectId={projectid} type="CONTEXT_ITEM" />
+                    <DeleteHandler func="ENV" envid={data._id} projectId={projectid} type="CONTEXT_ITEM" />
                     <ContextMenuItem>
                     </ContextMenuItem>
                     <EditAndShareMenuButton type="EDIT" envId={data._id} projectId={projectid} />

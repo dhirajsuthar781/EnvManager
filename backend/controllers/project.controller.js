@@ -14,6 +14,7 @@ const createProject = asyncHandler(async (req, res) => {
   const project = await Project.create({
     name: name.trim(),
     userId: req.user,
+    recentAt: Date.now(),
   });
 
   res.status(201).json({
@@ -73,7 +74,9 @@ const updateProject = asyncHandler(async (req, res) => {
     throw new ApiError(403, "Access Denied");
   }
 
+  project.recentAt = Date.now();
   project.name = name.trim();
+
   await project.save();
 
   res.status(200).json({
@@ -136,7 +139,7 @@ const getProjectById = asyncHandler(async (req, res) => {
 const getRecentProjects = asyncHandler(async (req, res) => {
   const projects = await Project.find({ userId: req.user })
     .sort({
-      updatedAt: -1,
+      recentAt: -1,
     })
     .limit(10)
     .select("_id name updatedAt");

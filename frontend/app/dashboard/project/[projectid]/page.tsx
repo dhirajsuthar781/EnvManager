@@ -4,6 +4,7 @@ import LoadingEnvFiles from "./_component/LoadingEnvFiles";
 import FetchEnvFiles from "./_component/FetchEnvFiles";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { getProjectById } from "@/lib/api/project_env";
 
 type Props = {
      params: Promise<{ projectid: string }>
@@ -11,11 +12,11 @@ type Props = {
 
 export default async function page({ params }: Props) {
      const { projectid } = await params;
-
+     const { project } = await getProjectById({ id: projectid });
      return (
           <PageWrapper >
                <header className=" flex-row flex justify-between">
-                    <span className=" text-xl text-black/80 font-medium">Project - {projectid}</span>
+                    <span className=" text-xl text-black/80 font-medium">  {project.name || projectid}</span>
                     <div className="  flex items-center gap-3">
                          <Link href={`/dashboard/project/${projectid}/create-env`}>
                               <Button variant={'default'}>Create Env File</Button>
