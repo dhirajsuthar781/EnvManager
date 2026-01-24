@@ -1,6 +1,6 @@
-import React from 'react'
 import Navbar from './_components/Navbar'
 import Sidebar from './_components/Sidebar'
+import GlobalDeleteDialog from './_components/dialogs/GlobalDeleteDialog'
 
 type Props = {
      children: React.ReactNode
@@ -16,6 +16,7 @@ export default function layout({ children }: Props) {
                     {children}
                     </div>
                </div>
+               <GlobalDeleteDialog />
           </section>
      )
 }

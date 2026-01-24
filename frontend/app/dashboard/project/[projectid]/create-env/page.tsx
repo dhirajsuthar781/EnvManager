@@ -80,7 +80,7 @@ export default function page({ params }: Props) {
             setEnvData({ name: '', content: '' });
             navigation.back()
           }}>Cancle</Button>
-          <Button onClick={onSaveHandler} variant={'default'}>Save</Button>
+          <Button isLoading={loading} disabled={loading} onClick={onSaveHandler} variant={'default'}>Save</Button>
 
         </div>
       </header>

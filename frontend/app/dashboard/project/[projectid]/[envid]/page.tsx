@@ -1,50 +1,43 @@
 import PageWrapper from "@/app/dashboard/_components/PageWrapper";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Textarea } from "@/components/ui/textarea";
 import ContentHandler from "./__components/ContentHandler";
 import EditButtonHandler from "./__components/EditButtonHandler";
 import DeleteHandler from "./__components/DeleteHandler";
+import { getEnvById } from "@/lib/api/project_env";
+import DownloadEnv from "../_component/DownloadEnv";
+import ButtonHandler from "./__components/ButtonHandler";
 
 type Props = {
-     params: Promise<{ envid: string }>
+     params: Promise<{ envid: string, projectid: string }>
 }
 
 /*------------------------------------
-Feature-
-1. env file name, 
-2. downalod and copy button
-3. text area + div to show content of env file
-4. a edit button to convert div to text area 
-5. convert edit button to save button or a timeout of saving feature
-6. delete env file button
-7. rename env file
-
-buttons -> download, copy, edit , envfileName edit , delete
-
-
-
+Pending is 
+saving animation or loading 
+onSave button
 --------------------------------------*/
+
 export default async function page({ params }: Props) {
-     const { envid } = await params;
-     let content: string = "Lorem ipsum dolor, sit amet  "
+     const { envid, projectid } = await params;
+     const { success, message, envFile } = await getEnvById({ envId: envid, projectId: projectid });
+
      return (
           <PageWrapper >
                <header className=" flex-row flex justify-between">
-                    <span className=" text-xl text-black/80 font-medium">Frontend Env</span>
-                    <div className="  flex items-center gap-3">
+                    <span className=" text-xl text-black/80 font-medium">{envFile.title}</span>
+                    <div className="  flex items-center gap-4">
 
                          {/* All button should be a client , seprate component */}
-                         <Button variant={'outline'}>Download</Button>
-                         <Button variant={'outline'}>Copy</Button>
+                         <ButtonHandler filename={envFile.title} content={envFile.content} />
                          <Separator orientation="vertical" />
-                         <EditButtonHandler envid={envid}/>
-                         <DeleteHandler envid={envid}/>
+                         <EditButtonHandler envid={envid} />
+                         <DeleteHandler projectId={projectid} envid={envid} type="BUTTON" />
 
                     </div>
                </header>
 
-               <ContentHandler envid={envid} content={content} />
+               <ContentHandler envid={envid} content={envFile.content} projectId={projectid} />
           </PageWrapper>
      )
 }

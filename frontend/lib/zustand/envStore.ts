@@ -4,37 +4,25 @@ import { create } from 'zustand'
 interface EnvManager {
      isEdit: boolean
      toggleEdit: () => void
-
-     //====================================
-     bears: number
-     increasePopulation: () => void
-     removeAllBears: () => void
-     updateBears: (newBears: number) => void
+     currentContent: string
+     onContentChange: (content: string) => void
+   
 }
 
 
 export const useEnvStore = create<EnvManager>()((set) => ({
 
      isEdit: false,
-
+     currentContent: '',
      toggleEdit: () => set((state) => {
           return {
                isEdit: !state.isEdit
           }
      }),
+     onContentChange: (content: string) => set({
+          currentContent: content
+     })
      //====================================
 
-     bears: 0,
-
-     increasePopulation: () => set((state) => ({
-          bears: state.bears + 1
-     })),
-
-     removeAllBears: () => set({
-          bears: 0
-     }),
-
-     updateBears: (newBears: number) => set({
-          bears: newBears
-     }),
+ 
 }))

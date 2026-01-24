@@ -7,7 +7,7 @@ type FetchOptions = {
   cache?: RequestCache;
   revalidate?: number;
   tags?: string[];
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   body?: unknown;
   token?: boolean;
 };

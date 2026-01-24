@@ -3,7 +3,7 @@
 ### GET LOGGED IN USER
 GET http://localhost:4000/api/v1/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 
 ### SIGNUP API
@@ -30,7 +30,7 @@ POST http://localhost:4000/api/v1/auth/refresh
 
 Content-Type: application/json
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 {
   "email": "nyqonowi@denipl.com"
@@ -42,12 +42,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZ
 ### GET PROJECT
 GET http://localhost:4000/api/v1/project
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 ### CREATE PROJECT
 POST http://localhost:4000/api/v1/project
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 {
    "name": "Other Project"  
@@ -57,18 +57,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZ
 ### ENV APIS ---------------------------------------------------------------
 
 
-### GET ENV
+### GET ENV by Project
 GET http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 
 ### CREATE ENV
 POST http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkwOTEwNDEsImV4cCI6MTc2OTA5Mjg0MX0.O4R_S3i43MfOpdIiAbN_51jTX4RbhXzM3mJrFF0OW6E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg
 
 {
    "title": "Frontend env",
    "content": "some content"  
 }
+
+### GET ENV
+GET http://localhost:4000/api/v1/project/6972338fd83aaea8b2c5639b/env-files/697233ffd83aaea8b2c563a8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDA5MDEsImV4cCI6MTc2OTI0MjcwMX0.N-dXrlbTuB7HWQ6394PRre70-UIjp4fAfUB_IOL1LSg

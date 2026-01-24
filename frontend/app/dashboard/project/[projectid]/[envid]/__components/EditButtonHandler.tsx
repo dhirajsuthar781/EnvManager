@@ -13,7 +13,7 @@ export default function EditButtonHandler({ }: Props) {
           toggleEdit();
      }
      async function onSaveHandler() {
-           // other work
+          toggleEdit();
      }
      return (
           <>

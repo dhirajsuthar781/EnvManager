@@ -1,52 +1,45 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import {
-     Dialog,
-     DialogClose,
-     DialogContent,
-     DialogDescription,
-     DialogFooter,
-     DialogHeader,
-     DialogTitle,
-     DialogTrigger,
-} from "@/components/ui/dialog"
+import { ContextMenuItem } from "@/components/ui/context-menu"
+import { useDeleteDialog } from "@/lib/zustand/useDeleteDialog"
+import { TrashIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
+
 type Props = {
-     envid: string
+     envid: string,
+     type: "CONTEXT_ITEM" | "BUTTON",
+     projectId: string
+
 }
 
-export default function DeleteHandler({ }: Props) {
-
-     async function onDeleteHandler() {
-          // other work
-     }
-     
+export default function DeleteHandler({ envid, type ,projectId}: Props) {
+     const router = useRouter()     
      return (
-          <> 
-               <Dialog>
-                    <form>
-                         <DialogTrigger asChild>
-                              <Button variant={"destructive"}>Delete</Button>
-                         </DialogTrigger>
-                         <DialogContent className="sm:max-w-106.25">
-                              <DialogHeader>
-                                   <DialogTitle>Are you absolutely sure?</DialogTitle>
-                                   <DialogDescription>
-                                        This action cannot be undone.
-                                   </DialogDescription>
-                              </DialogHeader>
-                              <div className="grid gap-4">
-                              </div>
-                              <DialogFooter>
-                                   <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
-                                   </DialogClose>
-                                   <Button onClick={onDeleteHandler}  variant={"destructive"}>Confirm</Button>
-                              </DialogFooter>
-                         </DialogContent>
-                    </form>
-               </Dialog>
+          type == "BUTTON" ?
+               <Button variant={'destructive'}
+                    onClick={() => {
+                         useDeleteDialog.getState().openDialog({
+                              id: envid,
+                              projectId: projectId,
+                              type: "ENV",
+                         })
+                         router.back()
+                    }}
+               >Delete</Button>
+               :
+               <ContextMenuItem
+                    variant="destructive"
+                    onSelect={(e) => {
 
-
-          </>
+                         useDeleteDialog.getState().openDialog({
+                              id: envid,
+                              type: "ENV",
+                              projectId: projectId
+                         })
+                    }}
+               >
+                    <TrashIcon className="mr-2 h-4 w-4" />
+                    Delete
+               </ContextMenuItem>
      )
 }
