@@ -18,7 +18,6 @@ const createEnvFile = asyncHandler(async (req, res) => {
     userId: req.user,
   });
 
-
   if (!project) throw new ApiError(403, "Access Denied");
   project.recentAt = Date.now();
   await project.save();

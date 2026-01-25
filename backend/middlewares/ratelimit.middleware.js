@@ -27,7 +27,7 @@ const createProjectRateLimiter = rateLimit({
   keyGenerator: (req) => {
     return req.user ? String(req.user) : ipKeyGenerator(req.ip);
   },
-  validate: { trustProxy: false }
+  validate: { trustProxy: false },
 });
 
 const deleteProjectRateLimiter = rateLimit({
@@ -42,7 +42,7 @@ const deleteProjectRateLimiter = rateLimit({
   keyGenerator: (req) => {
     return req.user ? String(req.user) : ipKeyGenerator(req.ip);
   },
-  validate: { trustProxy: false }
+  validate: { trustProxy: false },
 });
 
 export { loginRateLimiter, createProjectRateLimiter, deleteProjectRateLimiter };

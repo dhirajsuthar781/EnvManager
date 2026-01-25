@@ -8,7 +8,7 @@ const projectSchema = new Schema(
       trim: true,
     },
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -16,10 +16,23 @@ const projectSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    sharedWith: [
+      {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        role: {
+          type: String,
+          enum: ["editor", "viewer"],
+          default: "viewer",
+        },
+      },
+    ],
   },
   { timestamps: true },
 );
-
 
 projectSchema.methods.updateRecent = async function () {
   this.recentAt = Date.now();

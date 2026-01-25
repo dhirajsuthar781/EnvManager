@@ -1,4 +1,5 @@
 import { Project } from "../models/project.model.js";
+import { User } from "../models/user.model.js";
 import ApiError from "../utils/ApiError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
@@ -125,7 +126,12 @@ const getProjectById = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Project not found");
   }
 
-  if (!project.userId.equals(req.user)) {
+  const isOwner = project.userId.equals(req.user);
+  const isSharedUser = project.sharedWith.some((user) =>
+    user.userId.equals(req.user),
+  );
+
+  if (!isOwner && !isSharedUser) {
     throw new ApiError(403, "Access Denied");
   }
 
@@ -151,6 +157,71 @@ const getRecentProjects = asyncHandler(async (req, res) => {
   });
 });
 
+const shareProject = asyncHandler(async (req, res) => {
+  // projectId : Params
+  const { projectId } = req.params;
+
+  // username, role : body
+  const { username, role = "viewer" } = req.body;
+
+  // validation
+  if (!projectId) {
+    throw new ApiError(400, "Project id id required");
+  }
+
+  if (!username) {
+    throw new ApiError(400, "Username is required to share the project");
+  }
+
+  if (!["viewer", "editor"].includes(role)) {
+    throw new ApiError(400, "Invalid role");
+  }
+
+  // find project
+  const project = await Project.findById(projectId);
+  if (!project) {
+    throw new ApiError(404, "Project not found");
+  }
+
+  // check ownership
+  if (!project.userId.equals(req.user)) {
+    throw new ApiError(403, "Only Project owner can share this project");
+  }
+
+  // find user to share
+  const targetedUser = await User.findOne({ username });
+  if (!targetedUser) {
+    throw new ApiError(404, "User not found");
+  }
+
+  // prevent duplicate and self sharing
+  if (targetedUser._id.equals(req.user)) {
+    throw new ApiError(400, "Can't share project with yourself");
+  }
+
+  const duplicateSharing = project.sharedWith.some((user) =>
+    user.userId.equals(targetedUser._id),
+  );
+  if (duplicateSharing) {
+    throw new ApiError(400, "Project Already share with this user");
+  }
+
+  // share project
+  project.sharedWith.push({
+    userId: targetedUser._id,
+    role,
+  });
+
+  // save
+  await project.save();
+
+  // response
+  res.status(200).json({
+    success: true,
+    message: `Project successfully shared with ${username} as ${role}`,
+  });
+});
+
 export {
   createProject,
   getProject,
@@ -158,4 +229,5 @@ export {
   deleteProject,
   getProjectById,
   getRecentProjects,
+  shareProject,
 };

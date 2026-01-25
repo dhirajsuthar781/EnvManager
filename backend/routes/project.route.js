@@ -6,6 +6,7 @@ import {
   getProject,
   getProjectById,
   getRecentProjects,
+  shareProject,
   updateProject,
 } from "../controllers/project.controller.js";
 import {
@@ -22,6 +23,7 @@ router.get("/", getProject);
 
 router.get("/recent", getRecentProjects);
 
+router.post("/:projectId/share", shareProject);
 router.patch("/:projectId", updateProject);
 router.delete("/:projectId", deleteProjectRateLimiter, deleteProject);
 router.get("/:projectId", getProjectById);

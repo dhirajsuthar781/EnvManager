@@ -11,18 +11,14 @@ app.use(morganMiddleware);
 app.use(
   cors({
     origin:
-      process.env.NODE_ENV === "production" ?
-        [
-          "https://yourenv.vercel.app",
-        ] :
-        [
-          "http://localhost:3000"
-        ],
+      process.env.NODE_ENV === "production"
+        ? ["https://yourenv.vercel.app"]
+        : ["http://localhost:3000"],
     credentials: true,
   }),
 );
 
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cookieParser());
 
