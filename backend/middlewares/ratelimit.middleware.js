@@ -1,8 +1,8 @@
 import { rateLimit, ipKeyGenerator } from "express-rate-limit";
 
 const loginRateLimiter = rateLimit({
-  windowMs: 60 * 1000 * 15, // 15 minutes
-  max: 5,
+  windowMs: 60 * 1000 * 5, // 15 minutes
+  max: 15,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

@@ -91,7 +91,8 @@ export async function storeToken(token: string) {
 }
 
 export async function logout() {
-     return fetch('/api/auth/logout', {
+     return fetch('/api/auth/delete-token', {
           method: 'POST',
-     });
+     }).then((res) => res.json());
 }
+ 
