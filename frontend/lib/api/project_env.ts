@@ -23,11 +23,17 @@ export function patchEnvById({ projectId, envId, content }: { envId: string, pro
      return apiFetch<ApiResponse<EnvFileType, "envFile">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${projectId}/env-files/${envId}`, {
           method: "PATCH",
           token: true,
-          body:{ content },
+          body: { content },
      });
 }
 export function deleteEnvById({ projectId, envId }: { envId: string, projectId: string }) {
      return apiFetch<ApiResponse<EnvFileType, "envFile">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${projectId}/env-files/${envId}`, {
+          method: "DELETE",
+          token: true,
+     });
+}
+export function deleteProjectById({ projectId }: { projectId: string }) {
+     return apiFetch<BaseResponse>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${projectId}`, {
           method: "DELETE",
           token: true,
      });
@@ -55,6 +61,18 @@ export function getProjects() {
      return apiFetch<ApiResponse<ProjectType[], "formattedProjects">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project`, {
           token: true,
           tags: ["projects"]
+     });
+}
+export function getProjectsRecent() {
+     return apiFetch<ApiResponse<ProjectType[], "projects">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/recent`, {
+          token: true,
+          tags: ["projects"],
+
+     });
+}
+export function getProjectById({ id }: { id: string }) {
+     return apiFetch<ApiResponse<ProjectType, "project">>(`${process.env.NEXT_PUBLIC_BACKEND_URL}/project/${id}`, {
+          token: true,
      });
 }
 export function createProjectApi({ name }: { name: string }) {

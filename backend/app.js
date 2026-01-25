@@ -22,6 +22,7 @@ app.use(
   }),
 );
 
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -35,7 +36,6 @@ app.use("/api/v1", healthRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/project", projectRoute);
 app.use("/api/v1/project", EnvFileRoute);
-
 // Default
 app.get("/", (req, res) => {
   res.send("Api Is Running..");

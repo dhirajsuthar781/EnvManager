@@ -6,7 +6,7 @@ interface EnvManager {
      toggleEdit: () => void
      currentContent: string
      onContentChange: (content: string) => void
-   
+     
 }
 
 
@@ -14,6 +14,7 @@ export const useEnvStore = create<EnvManager>()((set) => ({
 
      isEdit: false,
      currentContent: '',
+     
      toggleEdit: () => set((state) => {
           return {
                isEdit: !state.isEdit
@@ -24,5 +25,5 @@ export const useEnvStore = create<EnvManager>()((set) => ({
      })
      //====================================
 
- 
+
 }))

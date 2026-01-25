@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Button } from "@/components/ui/button"
 import { useDeleteDialog } from "@/lib/zustand/useDeleteDialog"
 import { toast } from "sonner"
-import { deleteEnvById } from "@/lib/api/project_env"
+import { deleteEnvById, deleteProjectById } from "@/lib/api/project_env"
 import { refreshApi } from "@/lib/api/fetcher"
 
 export default function GlobalDeleteDialog() {
@@ -26,15 +26,30 @@ export default function GlobalDeleteDialog() {
           } else {
             toast.error(res.message)
           }
-        } catch (error) {
-          toast.error('Something went wrong')
+        } catch (error: any) {
+          toast.error(error.message || 'Something went wrong')
         } finally {
           toggleLoading(false)
         }
 
         break
       case "PROJECT":
-        //    await deleteProject(target.id)
+        try {
+          if (!target.projectId || isLoading == true) return
+          toggleLoading(true)
+          let res = await deleteProjectById({ projectId: target.projectId })
+          if (res.success) {
+            refreshApi('projects')
+            toast.success("Project deleted successfully")
+          } else {
+            toast.error(res.message)
+          }
+        } catch (error: any) {
+
+          toast.error(error.message || 'Something went wrong')
+        } finally {
+          toggleLoading(false)
+        }
         break
     }
 
