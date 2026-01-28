@@ -18,14 +18,14 @@ const router = Router();
 
 router.use(secure);
 
+
 router.post("/", createProjectRateLimiter, createProject);
 router.get("/", getProject);
-
 router.get("/recent", getRecentProjects);
-
-router.post("/:projectId/share", shareProject);
 router.patch("/:projectId", updateProject);
 router.delete("/:projectId", deleteProjectRateLimiter, deleteProject);
 router.get("/:projectId", getProjectById);
 
+
+router.post("/:projectId/share", shareProject);
 export default router;

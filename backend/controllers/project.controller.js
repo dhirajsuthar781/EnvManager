@@ -182,7 +182,7 @@ const shareProject = asyncHandler(async (req, res) => {
   if (!project) {
     throw new ApiError(404, "Project not found");
   }
-
+  
   // check ownership
   if (!project.userId.equals(req.user)) {
     throw new ApiError(403, "Only Project owner can share this project");

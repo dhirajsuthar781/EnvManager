@@ -1,0 +1,46 @@
+### AUTH APIS ---------------------------------------------------------------
+ 
+
+### LOGIN API
+POST http://localhost:4000/api/v1/auth/login
+Content-Type: application/json
+
+{
+   "username": "viraj",
+  "password": "dhiraj000"
+}
+ 
+
+
+### SHARING APIS ---------------------------------------------------------------
+
+### GET PROJECT
+GET http://localhost:4000/api/v1/project
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcxMDUzZTBhYmM0OTYyM2M5ZDYzZmEiLCJpYXQiOjE3Njk1NzczOTIsImV4cCI6MTc2OTU3OTE5Mn0.EcVK3wXlm_9itAuRb-1kunaoTqzZjwmglYJFqK7aeBo
+
+### GET RECENT PROJECT
+GET http://localhost:4000/api/v1/project/recent
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcxMDUzZTBhYmM0OTYyM2M5ZDYzZmEiLCJpYXQiOjE3Njk1NzczOTIsImV4cCI6MTc2OTU3OTE5Mn0.EcVK3wXlm_9itAuRb-1kunaoTqzZjwmglYJFqK7aeBo
+
+
+### CREATE PROJECT
+POST http://localhost:4000/api/v1/project
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcxMDUzZTBhYmM0OTYyM2M5ZDYzZmEiLCJpYXQiOjE3Njk1NzczOTIsImV4cCI6MTc2OTU3OTE5Mn0.EcVK3wXlm_9itAuRb-1kunaoTqzZjwmglYJFqK7aeBo
+
+{
+   "name": "Other Project"  
+}
+
+### SHARE PROJECT
+POST http://localhost:4000/api/v1/project/6974a6e07819c1c69683d992/share
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcxMDUzZTBhYmM0OTYyM2M5ZDYzZmEiLCJpYXQiOjE3Njk1NzczOTIsImV4cCI6MTc2OTU3OTE5Mn0.EcVK3wXlm_9itAuRb-1kunaoTqzZjwmglYJFqK7aeBo
+
+{
+   "username": "viraj" 
+}
+
+ 

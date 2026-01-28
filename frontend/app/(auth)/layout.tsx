@@ -6,7 +6,7 @@ type Props = { children: React.ReactNode }
 
 export default async function layout({ children }: Props) {
      const d = await getCurrentUser();
-     if (d !== null) {
+     if (d != null) {
           redirect('/dashboard');
      }
      

@@ -3,7 +3,7 @@
 ### GET LOGGED IN USER
 GET http://localhost:4000/api/v1/auth/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 
 ### SIGNUP API
@@ -30,7 +30,7 @@ POST http://localhost:4000/api/v1/auth/refresh
 
 Content-Type: application/json
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 {
   "email": "nyqonowi@denipl.com"
@@ -42,18 +42,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZ
 ### GET PROJECT
 GET http://localhost:4000/api/v1/project
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 ### GET RECENT PROJECT
 GET http://localhost:4000/api/v1/project/recent
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 
 ### CREATE PROJECT
 POST http://localhost:4000/api/v1/project
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 {
    "name": "Other Project"  
@@ -66,13 +66,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZ
 ### GET ENV by Project
 GET http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 
 ### CREATE ENV
 POST http://localhost:4000/api/v1/project/6970d3f541564452bbd9dbdc/env-files
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
 
 {
    "title": "Frontend env",
@@ -82,4 +82,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZ
 ### GET ENV
 GET http://localhost:4000/api/v1/project/6972338fd83aaea8b2c5639b/env-files/697233ffd83aaea8b2c563a8
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3NjkyNDk2NjksImV4cCI6MTc2OTI1MTQ2OX0.V6Df_QAyiLsWcXQOvhET2NAtoq4hu_VWm_QlxFOucak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTcwZDI3M2M4ZDQ3MGI0MTlhY2Y5MGIiLCJpYXQiOjE3Njk1NzcwOTgsImV4cCI6MTc2OTU3ODg5OH0.2mOyKC7gwRf51b1tbyVUvQT08_0Xhr0iSZaxAqOu7TA
